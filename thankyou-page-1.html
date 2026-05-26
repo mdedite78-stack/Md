@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Thank You — Freelance Legal Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & ROOT ===== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; font-size:16px; }
+
+:root {
+  --gold: #C9A84C;
+  --gold-lt: #F0D080;
+  --gold-dim: rgba(201,168,76,0.15);
+  --dark:  #090909;
+  --d2: #111;
+  --d3: #191919;
+  --d4: #222;
+  --white: #F4EFE6;
+  --muted: #80807A;
+  --red: #E05252;
+  --green: #4CAF7D;
+  --pad: 20px;
+  --r: 14px;
+}
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+img { display:block; max-width:100%; }
+a { text-decoration:none; color:inherit; }
+
+/* ===== CONFETTI CANVAS ===== */
+#confetti-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: rgba(9,9,9,.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,168,76,.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px var(--pad);
+}
+.logo {
+  font-family:'Playfair Display',serif;
+  font-size: 17px;
+  color: var(--gold);
+  letter-spacing: .5px;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  height:1px;
+  background: linear-gradient(90deg,transparent,rgba(201,168,76,.2),transparent);
+  margin: 0 var(--pad);
+}
+
+/* ===== SUCCESS GLOW ===== */
+.glow-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.2) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  position: relative;
+  animation: pulseRing 2.5s ease-in-out infinite;
+}
+.glow-ring::before {
+  content:'';
+  position:absolute;
+  inset:-8px;
+  border-radius:50%;
+  border: 1.5px solid rgba(201,168,76,.25);
+  animation: expandRing 2.5s ease-in-out infinite;
+}
+.glow-ring::after {
+  content:'';
+  position:absolute;
+  inset:-20px;
+  border-radius:50%;
+  border: 1px solid rgba(201,168,76,.1);
+  animation: expandRing 2.5s ease-in-out infinite .4s;
+}
+@keyframes pulseRing {
+  0%,100%{ box-shadow: 0 0 0 0 rgba(201,168,76,.15); }
+  50%{ box-shadow: 0 0 40px 10px rgba(201,168,76,.08); }
+}
+@keyframes expandRing {
+  0%{ opacity:.6; transform:scale(1); }
+  100%{ opacity:0; transform:scale(1.35); }
+}
+.check-ico {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  animation: popIn .6s cubic-bezier(.175,.885,.32,1.275) both;
+}
+@keyframes popIn {
+  0%{ transform:scale(0); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  padding: 52px var(--pad) 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute;
+  top:-100px; left:50%;
+  transform:translateX(-50%);
+  width:400px; height:400px;
+  background:radial-gradient(circle, rgba(201,168,76,.07) 0%, transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(76,175,125,.12);
+  border: 1px solid rgba(76,175,125,.35);
+  color: var(--green);
+  padding: 7px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  letter-spacing: .3px;
+  animation: fadeDown .5s ease both .2s;
+}
+.dot-green {
+  width:7px; height:7px;
+  background: var(--green);
+  border-radius:50%;
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+@keyframes fadeDown {
+  0%{ opacity:0; transform:translateY(-12px); }
+  100%{ opacity:1; transform:translateY(0); }
+}
+
+.hero h1 {
+  font-family: 'Playfair Display',serif;
+  font-size: clamp(32px,9vw,48px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  animation: fadeUp .6s ease both .3s;
+}
+.hero h1 em {
+  font-style:normal;
+  color: var(--gold);
+}
+.hero .sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 0;
+  animation: fadeUp .6s ease both .4s;
+}
+@keyframes fadeUp {
+  0%{ opacity:0; transform:translateY(18px); }
+  100%{ opacity:1; transform:translateY(0); }
+}
+
+/* ===== ACCESS CARD ===== */
+.access-section {
+  padding: 0 var(--pad) 48px;
+}
+.access-card {
+  background: var(--d2);
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp .6s ease both .5s;
+}
+.access-card::before {
+  content:'';
+  position:absolute;
+  top:-120px; left:50%;
+  transform:translateX(-50%);
+  width:280px; height:280px;
+  background:rgba(201,168,76,.06);
+  border-radius:50%;
+  filter:blur(40px);
+  pointer-events:none;
+}
+.access-label {
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:18px;
+}
+.access-card h2 {
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  margin-bottom:8px;
+}
+.access-card .desc {
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.65;
+  margin-bottom:28px;
+}
+
+/* ===== DOWNLOAD BUTTON ===== */
+.btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 19px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 8px 40px rgba(201,168,76,.4);
+  transition: all .2s;
+  margin-bottom: 14px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: .2px;
+}
+.btn-download:active { transform:scale(.98); background:var(--gold-lt); }
+.btn-download svg { flex-shrink:0; }
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: transparent;
+  color: var(--gold);
+  padding: 15px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1.5px solid rgba(201,168,76,.35);
+  transition: all .2s;
+  cursor: pointer;
+}
+.btn-secondary:active { background: var(--gold-dim); }
+
+.secure-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 16px;
+}
+.secure-note .ico-green { color: var(--green); }
+
+/* ===== WHAT'S INSIDE ===== */
+.inside-section {
+  padding: 0 var(--pad) 48px;
+  animation: fadeUp .6s ease both .6s;
+}
+.section-tag {
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:12px;
+}
+.inside-section h2 {
+  font-family:'Playfair Display',serif;
+  font-size: clamp(22px,6vw,32px);
+  line-height:1.2;
+  margin-bottom:20px;
+}
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.doc-item {
+  background: var(--d2);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all .2s;
+}
+.doc-item::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:3px; height:100%;
+  background: var(--gold);
+  border-radius:0 2px 2px 0;
+}
+.doc-item:active { background: var(--d3); }
+.doc-ico {
+  width:40px; height:40px;
+  border-radius:10px;
+  background: var(--gold-dim);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0;
+}
+.doc-info strong { display:block; font-size:14px; font-weight:600; margin-bottom:3px; }
+.doc-info span { font-size:12px; color:var(--muted); }
+.doc-check {
+  margin-left:auto;
+  width:22px; height:22px;
+  border-radius:50%;
+  background: rgba(76,175,125,.15);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--green); font-size:11px; font-weight:700;
+  flex-shrink:0;
+}
+
+/* ===== BONUS CARD ===== */
+.bonus-card {
+  background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.04));
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:var(--r);
+  padding:20px 18px;
+  display:flex; align-items:flex-start; gap:14px;
+  margin-top:10px;
+}
+.bonus-ico { font-size:32px; flex-shrink:0; }
+.bonus-text h3 { font-size:14px; font-weight:600; color:var(--gold); margin-bottom:4px; }
+.bonus-text p { font-size:12px; color:var(--muted); line-height:1.6; }
+
+/* ===== STEPS ===== */
+.steps-section {
+  padding: 0 var(--pad) 48px;
+  animation: fadeUp .6s ease both .7s;
+}
+.steps-section h2 {
+  font-family:'Playfair Display',serif;
+  font-size: clamp(22px,6vw,32px);
+  margin-bottom:20px;
+}
+.steps-list { display:flex; flex-direction:column; gap:0; }
+.step {
+  display:flex;
+  gap:16px;
+  position:relative;
+  padding-bottom:24px;
+}
+.step:last-child { padding-bottom:0; }
+.step-left {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  flex-shrink:0;
+  gap:0;
+}
+.step-num {
+  width:36px; height:36px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--dark);
+  font-size:13px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  position:relative; z-index:1;
+}
+.step-line {
+  width:2px;
+  flex:1;
+  background:linear-gradient(to bottom, rgba(201,168,76,.4), rgba(201,168,76,.05));
+  margin-top:4px;
+}
+.step:last-child .step-line { display:none; }
+.step-body { padding-top:6px; }
+.step-body h3 { font-size:15px; font-weight:600; margin-bottom:5px; }
+.step-body p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+/* ===== TRUST STRIP ===== */
+.trust-section {
+  background: var(--d2);
+  padding: 40px var(--pad);
+  animation: fadeUp .6s ease both .8s;
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+.trust-item {
+  background: var(--d3);
+  border: 1px solid rgba(255,255,255,.04);
+  padding: 22px 16px;
+  text-align: center;
+  border-radius: 0;
+}
+.trust-item:first-child { border-radius:var(--r) 0 0 0; }
+.trust-item:nth-child(2) { border-radius:0 var(--r) 0 0; }
+.trust-item:nth-child(3) { border-radius:0 0 0 var(--r); }
+.trust-item:last-child { border-radius:0 0 var(--r) 0; }
+.trust-ico { font-size:26px; margin-bottom:8px; }
+.trust-item strong { display:block; font-size:13px; font-weight:600; margin-bottom:4px; }
+.trust-item span { font-size:12px; color:var(--muted); line-height:1.4; }
+
+/* ===== SUPPORT ===== */
+.support-section {
+  padding: 40px var(--pad) 56px;
+  animation: fadeUp .6s ease both .9s;
+}
+.support-card {
+  background: var(--d3);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r);
+  padding: 24px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.support-ico {
+  font-size: 32px; flex-shrink:0;
+}
+.support-text h3 { font-size:15px; font-weight:600; margin-bottom:6px; }
+.support-text p {
+  font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:14px;
+}
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #25D366;
+  color: #fff;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all .2s;
+}
+.btn-whatsapp:active { opacity:.85; }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align:center;
+  padding: 28px var(--pad);
+  font-size:12px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,.05);
+  line-height:1.7;
+}
+footer em { color:var(--gold); font-style:normal; }
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">⚖️ Freelance Legal Pack</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">
+    <div class="dot-green"></div>
+    Payment Successful
+  </div>
+
+  <div class="glow-ring">
+    <div class="check-ico">✓</div>
+  </div>
+
+  <h1>Shukriya!<br>Aapka <em>Pack Ready</em> Hai</h1>
+  <p class="sub">Payment confirm ho gayi. Ab apna Freelance Legal Pack download karo aur apna kaam protect karna shuru karo.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACCESS CARD -->
+<section class="access-section" style="padding-top:32px;">
+  <div class="access-card">
+    <div class="access-label">📥 Your Product Access</div>
+    <h2>Instant Download</h2>
+    <p class="desc">Neeche button dabao aur apna Freelance Legal Pack — 6 legal documents + Zoho Sign Bonus Guide — turant download karo.</p>
+
+    <!-- ✅ YAHAN APNA DOWNLOAD LINK DAALO -->
+    <a href="https://drive.google.com/drive/folders/1g1ZH2_iAaAyXj5bZAuFoY0_61T8FFgKD" target="_blank" rel="noopener noreferrer" class="btn-download">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      📁 Abhi Download Karo
+    </a>
+
+    <!-- Optional: Google Drive / Notion / Gumroad link -->
+    <a href="https://drive.google.com/drive/folders/1g1ZH2_iAaAyXj5bZAuFoY0_61T8FFgKD" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+      ☁️ Google Drive se Access Karo
+    </a>
+
+    <div class="secure-note">
+      <span class="ico-green">🔒</span>
+      Secure link • Sirf aapke liye • Lifetime access
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside-section">
+  <div class="section-tag">Pack Contents</div>
+  <h2>Aapke Pack Mein Kya Hai</h2>
+
+  <div class="doc-list">
+    <div class="doc-item">
+      <div class="doc-ico">📄</div>
+      <div class="doc-info">
+        <strong>Service Agreement</strong>
+        <span>Main freelance contract — legally valid</span>
+      </div>
+      <div class="doc-check">✓</div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-ico">📋</div>
+      <div class="doc-info">
+        <strong>Scope of Work Template</strong>
+        <span>Project boundaries clearly define karo</span>
+      </div>
+      <div class="doc-check">✓</div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-ico">💰</div>
+      <div class="doc-info">
+        <strong>Payment Terms + Late Fee Notice</strong>
+        <span>Payments on time, har baar</span>
+      </div>
+      <div class="doc-check">✓</div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-ico">🔄</div>
+      <div class="doc-info">
+        <strong>Revision Policy Document</strong>
+        <span>Unlimited revisions ko goodbye kaho</span>
+      </div>
+      <div class="doc-check">✓</div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-ico">🤝</div>
+      <div class="doc-info">
+        <strong>Project Closure + Handover Form</strong>
+        <span>Clean ending, no disputes</span>
+      </div>
+      <div class="doc-check">✓</div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-ico">🔏</div>
+      <div class="doc-info">
+        <strong>NDA — Non-Disclosure Agreement</strong>
+        <span>Apna idea aur work protect karo</span>
+      </div>
+      <div class="doc-check">✓</div>
+    </div>
+
+    <!-- BONUS -->
+    <div class="bonus-card">
+      <div class="bonus-ico">🎁</div>
+      <div class="bonus-text">
+        <h3>BONUS: Zoho Sign Setup Guide</h3>
+        <p>Step-by-step screenshots ke saath — bilkul free mein online signing setup karo. Contract send karna ab 2 minute ka kaam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NEXT STEPS -->
+<section class="steps-section" style="padding-top:40px;">
+  <div class="section-tag">Quick Start</div>
+  <h2>Agle 5 Minute Mein Kya Karo</h2>
+
+  <div class="steps-list">
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">1</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <h3>Download Karo</h3>
+        <p>Upar wale button se ZIP file download karo. Usme Word (.docx) aur PDF dono formats honge.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">2</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <h3>Customize Karo</h3>
+        <p>Word file mein apna naam, rate, city aur services fill karo. [BRACKETS] wali jagah — sab replace karo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">3</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <h3>Zoho Sign Setup Karo</h3>
+        <p>Bonus guide padho — 10 minute mein free online signing ready. Phir PDF upload karo aur client ko bhejo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left">
+        <div class="step-num">4</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <h3>Pehla Contract Bhejo 🎉</h3>
+        <p>Agle client ko professionally onboard karo. Ab koi cheating nahi, koi dispute nahi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust-section">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-ico">⚡</div>
+      <strong>Instant Access</strong>
+      <span>Download abhi available hai</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">🔄</div>
+      <strong>Lifetime Updates</strong>
+      <span>Future versions free milenge</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">⚖️</div>
+      <strong>Legally Valid</strong>
+      <span>Indian Contract Act ke under</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">✏️</div>
+      <strong>100% Editable</strong>
+      <span>Word format — full control</span>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support-section">
+  <div class="section-tag">Need Help?</div>
+  <div class="support-card">
+    <div class="support-ico">💬</div>
+    <div class="support-text">
+      <h3>Koi problem hai? Hum yahan hain.</h3>
+      <p>Download nahi hua? File open nahi ho rahi? Koi bhi issue ho — WhatsApp karo, 24 ghante mein solve karenge.</p>
+      <!-- ✅ YAHAN APNA WHATSAPP NUMBER DAALO -->
+      <a href="https://wa.me/917878182622?text=Hi%2C%20Maine%20Freelance%20Legal%20Pack%20purchase%20kiya%20hai.%20Mujhe%20help%20chahiye." class="btn-whatsapp">
+        💬 WhatsApp Support
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Freelance Legal Pack. All rights reserved.<br>
+  Made with ❤️ for Indian Freelancers 🇮🇳<br>
+  <em>Aapka kaam, aapka paisa — protected.</em></p>
+</footer>
+
+<!-- CONFETTI SCRIPT -->
+<script>
+// Simple confetti burst on load
+(function() {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const COLORS = ['#C9A84C','#F0D080','#4CAF7D','#F4EFE6','#E8C96A'];
+  const pieces = [];
+  const COUNT = 80;
+
+  for (let i = 0; i < COUNT; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height * .5 - 20,
+      w: Math.random() * 8 + 4,
+      h: Math.random() * 12 + 6,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() - .5) * .15,
+      vx: (Math.random() - .5) * 2,
+      vy: Math.random() * 3 + 2,
+      opacity: 1
+    });
+  }
+
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      if (p.y < canvas.height + 20) {
+        alive = true;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.angle += p.spin;
+        if (p.y > canvas.height * .6) {
+          p.opacity -= .015;
+          p.opacity = Math.max(0, p.opacity);
+        }
+        ctx.save();
+        ctx.globalAlpha = p.opacity;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      }
+    });
+    frame++;
+    if (frame < 220) requestAnimationFrame(draw);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  draw();
+})();
+</script>
+
+</body>
+</html>
+	

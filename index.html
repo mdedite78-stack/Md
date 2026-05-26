@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Freelance Legal Pack — Apna Kaam, Apna Paisa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & ROOT ===== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; font-size:16px; }
+
+:root {
+  --gold: #C9A84C;
+  --gold-lt: #F0D080;
+  --gold-dim: rgba(201,168,76,0.15);
+  --dark:  #090909;
+  --d2: #111;
+  --d3: #191919;
+  --d4: #222;
+  --white: #F4EFE6;
+  --muted: #80807A;
+  --red: #E05252;
+  --green: #4CAF7D;
+  --pad: 20px;        /* mobile side padding */
+  --r: 14px;          /* border-radius */
+}
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display:block; max-width:100%; }
+a { text-decoration:none; color:inherit; }
+
+/* ===== ANNOUNCE BAR ===== */
+.bar {
+  background: var(--gold);
+  color: var(--dark);
+  text-align: center;
+  padding: 11px var(--pad);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.bar s { opacity:.55; font-weight:400; }
+
+/* ===== NAV ===== */
+nav {
+  position: sticky; top:0; z-index:200;
+  background: rgba(9,9,9,.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,168,76,.14);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px var(--pad);
+  gap: 12px;
+}
+.logo {
+  font-family:'Playfair Display',serif;
+  font-size: 17px;
+  color: var(--gold);
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+.nav-btn {
+  background: var(--gold);
+  color: var(--dark);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+.nav-btn:active { background: var(--gold-lt); }
+
+/* ===== HERO ===== */
+.hero {
+  padding: 48px var(--pad) 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content:'';
+  position:absolute;
+  bottom:-120px; right:-80px;
+  width:280px; height:280px;
+  background: radial-gradient(circle, rgba(201,168,76,.1) 0%, transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,.3);
+  color: var(--gold);
+  padding: 7px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 22px;
+  letter-spacing: .3px;
+}
+.dot {
+  width:7px; height:7px;
+  background:var(--gold);
+  border-radius:50%;
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+.hero h1 {
+  font-family: 'Playfair Display',serif;
+  font-size: clamp(36px,10vw,52px);
+  line-height: 1.08;
+  margin-bottom: 18px;
+  letter-spacing: -.5px;
+}
+.hero h1 em {
+  font-style:normal;
+  color: var(--gold);
+}
+.hero p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+.hero-price {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.price-old { font-size:14px; color:var(--muted); text-decoration:line-through; }
+.price-new { font-size:32px; font-family:'Playfair Display',serif; color:var(--gold); }
+.price-label { font-size:12px; color:var(--muted); margin-top:2px; }
+
+.btn-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 18px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(201,168,76,.35);
+  transition: all .2s;
+  margin-bottom: 16px;
+}
+.btn-main:active { transform:scale(.98); background:var(--gold-lt); }
+
+.trust-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.pill {
+  background: var(--d3);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 100px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.pill span { color:var(--gold); font-size:13px; }
+
+/* ===== DIVIDER ===== */
+.divider {
+  height:1px;
+  background: linear-gradient(90deg,transparent,rgba(201,168,76,.2),transparent);
+  margin: 0 var(--pad);
+}
+
+/* ===== PAIN ===== */
+.section { padding: 56px var(--pad); }
+.section-tag {
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:12px;
+}
+.section h2 {
+  font-family:'Playfair Display',serif;
+  font-size: clamp(26px,7vw,40px);
+  line-height:1.15;
+  margin-bottom:32px;
+}
+.pain-list { display:flex; flex-direction:column; gap:3px; }
+.pain-card {
+  background:var(--d2);
+  border-left:3px solid var(--red);
+  padding:20px 18px;
+  border-radius:0 10px 10px 0;
+  transition: all .25s;
+}
+.pain-card:active { background:var(--d3); }
+.pain-card .ico { font-size:26px; margin-bottom:10px; display:block; }
+.pain-card h3 { font-size:15px; font-weight:600; margin-bottom:6px; }
+.pain-card p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+.info-box {
+  margin-top:24px;
+  background:rgba(201,168,76,.07);
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:12px;
+  padding:18px;
+  font-size:13px;
+  color:var(--gold-lt);
+  line-height:1.65;
+}
+
+/* ===== DOCS ===== */
+.docs-section { padding:48px var(--pad); background:var(--d2); }
+.docs-section h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,7vw,40px);
+  line-height:1.15;
+  margin-bottom:8px;
+}
+.docs-section .sub {
+  font-size:14px; color:var(--muted); margin-bottom:32px; line-height:1.6;
+}
+.doc-cards { display:flex; flex-direction:column; gap:14px; }
+.doc-card {
+  background:var(--d3);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--r);
+  padding:22px 20px;
+  position:relative;
+  overflow:hidden;
+  transition:all .25s;
+}
+.doc-card::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+.doc-num {
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:8px;
+}
+.doc-card h3 { font-size:17px; font-weight:600; margin-bottom:8px; }
+.doc-card > p { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:14px; }
+.doc-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.doc-list li {
+  font-size:13px; color:var(--muted);
+  display:flex; align-items:flex-start; gap:8px;
+}
+.doc-list li::before {
+  content:'✓'; color:var(--gold); font-weight:700;
+  flex-shrink:0; margin-top:1px;
+}
+
+/* BONUS */
+.bonus {
+  margin-top:14px;
+  background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.04));
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:var(--r);
+  padding:22px 20px;
+  display:flex; align-items:flex-start; gap:16px;
+}
+.bonus-ico { font-size:36px; flex-shrink:0; }
+.bonus h3 { font-size:15px; font-weight:600; color:var(--gold); margin-bottom:6px; }
+.bonus p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+/* ===== STATS ===== */
+.stats { padding:48px var(--pad); }
+.stats-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3px;
+}
+.stat {
+  background:var(--d2);
+  padding:28px 20px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.04);
+}
+.stat:first-child { border-radius:var(--r) 0 0 0; }
+.stat:nth-child(2) { border-radius:0 var(--r) 0 0; }
+.stat:nth-child(3) { border-radius:0 0 0 var(--r); }
+.stat:last-child { border-radius:0 0 var(--r) 0; }
+.stat-n {
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:6px;
+}
+.stat-l { font-size:12px; color:var(--muted); line-height:1.4; }
+
+/* ===== TESTIMONIALS ===== */
+.testi-section { padding:56px var(--pad); background:var(--d2); }
+.testi-section h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,7vw,40px);
+  margin-bottom:28px;
+}
+.testi-list { display:flex; flex-direction:column; gap:14px; }
+.testi-card {
+  background:var(--d3);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--r);
+  padding:22px 20px;
+  transition:all .25s;
+}
+.stars { color:var(--gold); font-size:15px; letter-spacing:2px; margin-bottom:12px; }
+.testi-card blockquote {
+  font-size:14px; line-height:1.7;
+  font-style:italic; color:var(--white);
+  opacity:.88; margin-bottom:18px;
+}
+.testi-author { display:flex; align-items:center; gap:10px; }
+.avatar {
+  width:38px; height:38px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--dark);
+  font-size:14px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.author-info strong { display:block; font-size:13px; font-weight:600; }
+.author-info span { font-size:11px; color:var(--muted); }
+
+/* ===== PRICING ===== */
+.pricing { padding:56px var(--pad); }
+.pricing h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,8vw,44px);
+  line-height:1.1;
+  margin-bottom:8px;
+}
+.pricing .sub {
+  font-size:14px; color:var(--muted);
+  line-height:1.6; margin-bottom:32px;
+}
+.price-card {
+  background:var(--d2);
+  border:2px solid var(--gold);
+  border-radius:20px;
+  padding:32px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.price-card::before {
+  content:'';
+  position:absolute;
+  top:-150px; left:50%;
+  transform:translateX(-50%);
+  width:300px; height:300px;
+  background:rgba(201,168,76,.06);
+  border-radius:50%;
+  filter:blur(50px);
+  pointer-events:none;
+}
+.popular {
+  position:absolute;
+  top:18px; right:18px;
+  background:var(--gold);
+  color:var(--dark);
+  font-size:11px; font-weight:700;
+  letter-spacing:1px;
+  padding:5px 12px;
+  border-radius:100px;
+}
+.plan-label {
+  font-size:10px; letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold); font-weight:600;
+  margin-bottom:16px;
+}
+.plan-price { margin-bottom:28px; }
+.plan-price .crossed {
+  font-size:14px; color:var(--muted);
+  text-decoration:line-through; margin-bottom:4px;
+}
+.plan-price .amount {
+  font-family:'Playfair Display',serif;
+  font-size:64px; line-height:1;
+  color:var(--white);
+}
+.plan-price .amount sup {
+  font-size:28px; color:var(--gold);
+  vertical-align:super; line-height:0;
+}
+.plan-price .note {
+  font-size:12px; color:var(--muted); margin-top:6px;
+}
+.feat-list { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:32px; }
+.feat-list li {
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:14px; color:var(--white);
+}
+.feat-list li .ck {
+  width:22px; height:22px; flex-shrink:0;
+  border-radius:50%;
+  background:rgba(201,168,76,.15);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold); font-size:11px; font-weight:700;
+  margin-top:1px;
+}
+.btn-buy {
+  display:block;
+  background:var(--gold);
+  color:var(--dark);
+  text-align:center;
+  padding:18px 24px;
+  border-radius:12px;
+  font-size:17px;
+  font-weight:700;
+  box-shadow:0 8px 40px rgba(201,168,76,.4);
+  transition:all .2s;
+  margin-bottom:16px;
+}
+.btn-buy:active { transform:scale(.98); background:var(--gold-lt); }
+.secure {
+  display:flex; align-items:center;
+  justify-content:center;
+  gap:7px;
+  font-size:12px; color:var(--muted);
+}
+.secure .ico { color:var(--green); }
+
+/* ===== FAQ ===== */
+.faq { padding:56px var(--pad); background:var(--d2); }
+.faq h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,7vw,40px);
+  margin-bottom:28px;
+}
+.faq-item { border-bottom:1px solid rgba(255,255,255,.07); }
+.faq-q {
+  display:flex; justify-content:space-between;
+  align-items:center; gap:16px;
+  padding:18px 0;
+  font-size:15px; font-weight:500;
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+  line-height:1.4;
+}
+.faq-ico {
+  color:var(--gold); font-size:22px;
+  flex-shrink:0; transition:transform .3s;
+}
+.faq-a {
+  font-size:14px; color:var(--muted);
+  line-height:1.7;
+  max-height:0; overflow:hidden;
+  transition:max-height .4s ease, padding .3s;
+}
+.faq-item.open .faq-a { max-height:300px; padding-bottom:18px; }
+.faq-item.open .faq-ico { transform:rotate(45deg); }
+
+/* ===== FOOTER CTA ===== */
+.footer-cta {
+  padding:64px var(--pad) 56px;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.footer-cta::before {
+  content:'';
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:350px; height:350px;
+  background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.footer-cta h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,8vw,44px);
+  line-height:1.1;
+  margin-bottom:14px;
+}
+.footer-cta p {
+  font-size:15px; color:var(--muted);
+  line-height:1.6; margin-bottom:36px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background:var(--d2);
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:24px var(--pad);
+  text-align:center;
+}
+footer p { font-size:12px; color:var(--muted); line-height:1.7; }
+
+/* ===== STICKY BOTTOM BAR ===== */
+.sticky {
+  position:fixed; bottom:0; left:0; right:0;
+  background:rgba(17,17,17,.97);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-top:1px solid rgba(201,168,76,.25);
+  padding:12px var(--pad);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  z-index:300;
+  transform:translateY(100%);
+  transition:transform .35s ease;
+}
+.sticky.show { transform:translateY(0); }
+.sticky-left strong { display:block; font-size:13px; }
+.sticky-left span { font-size:11px; color:var(--muted); }
+.sticky-btn {
+  background:var(--gold);
+  color:var(--dark);
+  padding:12px 22px;
+  border-radius:10px;
+  font-size:14px; font-weight:700;
+  white-space:nowrap; flex-shrink:0;
+}
+.sticky-btn:active { background:var(--gold-lt); }
+
+/* ===== DESKTOP UPGRADES ===== */
+@media(min-width:600px) {
+  :root { --pad:36px; }
+  .pain-list { display:grid; grid-template-columns:1fr 1fr; }
+  .doc-cards { display:grid; grid-template-columns:1fr 1fr; }
+  .testi-list { display:grid; grid-template-columns:1fr 1fr; }
+}
+@media(min-width:900px) {
+  :root { --pad:60px; }
+  .pain-list { grid-template-columns:repeat(4,1fr); }
+  .doc-cards { grid-template-columns:repeat(3,1fr); }
+  .testi-list { grid-template-columns:repeat(3,1fr); }
+  .hero { padding-top:80px; padding-bottom:72px; }
+  .hero h1 { font-size:68px; }
+  .btn-main { width:auto; display:inline-flex; }
+  .stats-grid { grid-template-columns:repeat(4,1fr); }
+  .stat:first-child { border-radius:var(--r) 0 0 var(--r); }
+  .stat:nth-child(2) { border-radius:0; }
+  .stat:nth-child(3) { border-radius:0; }
+  .stat:last-child { border-radius:0 var(--r) var(--r) 0; }
+  .price-card { max-width:600px; margin:0 auto; }
+  .faq { max-width:760px; margin:0 auto; }
+}
+
+/* ===== RAZORPAY BUTTON ===== */
+#rzp-btn {
+  display:block; width:100%;
+  background:var(--gold); color:var(--dark);
+  text-align:center;
+  padding:18px 24px; border-radius:12px;
+  font-size:17px; font-weight:700;
+  box-shadow:0 8px 40px rgba(201,168,76,.4);
+  transition:all .2s;
+  margin-bottom:16px;
+  border:none; cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+}
+#rzp-btn:active { transform:scale(.98); background:var(--gold-lt); }
+#rzp-btn:disabled { opacity:.6; cursor:not-allowed; }
+
+.pay-methods {
+  display:flex; align-items:center;
+  justify-content:center; flex-wrap:wrap;
+  gap:6px; margin-bottom:12px;
+  font-size:12px; color:var(--muted);
+}
+
+/* ===== SUCCESS POPUP ===== */
+.popup-overlay {
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.85);
+  z-index:1000;
+  display:flex; align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.popup-box {
+  background:var(--d2);
+  border:1px solid rgba(201,168,76,.4);
+  border-radius:20px;
+  padding:40px 28px;
+  text-align:center;
+  max-width:380px; width:100%;
+}
+.popup-icon { font-size:56px; margin-bottom:16px; }
+.popup-box h3 {
+  font-family:'Playfair Display',serif;
+  font-size:24px; margin-bottom:10px;
+  color:var(--gold);
+}
+.popup-box p {
+  font-size:14px; color:var(--muted);
+  line-height:1.65; margin-bottom:24px;
+}
+.popup-btn {
+  display:block; background:var(--gold);
+  color:var(--dark); padding:14px 24px;
+  border-radius:10px; font-weight:700;
+  font-size:15px; margin-bottom:12px;
+}
+.popup-close {
+  background:none; border:none;
+  color:var(--muted); font-size:13px;
+  cursor:pointer; font-family:'DM Sans',sans-serif;
+  text-decoration:underline;
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.rv {
+  opacity:0; transform:translateY(24px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+.rv.on { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="bar">
+  🔥 Launch Offer — Sirf <s>₹999</s> ki jagah aaj <strong>₹499</strong> mein! Sirf kuch time ke liye.
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">⚖️ LegalPack</div>
+  <a href="https://superprofile.bio/vp/1000--fact-video-" target="_blank" class="nav-btn">₹499 Mein Kharido →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge rv"><div class="dot"></div> 🇮🇳 India ke Freelancers ke liye</div>
+  <h1 class="rv">
+    Client Ka<br>
+    <em>Paise Rokna</em><br>
+    Band Karo
+  </h1>
+  <p class="rv">
+    6 ready-made Indian legal documents — Service Agreement, NDA, Payment Terms, Revision Policy aur bhi. Pehle din se bhejo — kabhi cheating mat kha-o.
+  </p>
+
+  <div class="hero-price rv">
+    <div>
+      <div class="price-old">₹999</div>
+      <div class="price-new">₹499</div>
+      <div class="price-label">Ek baar ka payment</div>
+    </div>
+  </div>
+
+  <a href="https://superprofile.bio/vp/1000--fact-video-" target="_blank" class="btn-main rv">
+    🛡️ Abhi Download Karo <span>→</span>
+  </a>
+
+  <div class="trust-pills rv">
+    <div class="pill"><span>✓</span> Instant Download</div>
+    <div class="pill"><span>✓</span> Indian Law Valid</div>
+    <div class="pill"><span>✓</span> Online Sign Ready</div>
+    <div class="pill"><span>✓</span> Lifetime Access</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAIN -->
+<section class="section">
+  <div class="section-tag rv">Pehchana Sa Lagta Hai?</div>
+  <h2 class="rv">Har Freelancer<br>Ke Saath Hota Hai</h2>
+  <div class="pain-list">
+    <div class="pain-card rv">
+      <span class="ico">💸</span>
+      <h3>"Payment kal pakka"</h3>
+      <p>Weeks tak "kal" aata raha. Client ghost ho gaya. 2 mahine kaam waste.</p>
+    </div>
+    <div class="pain-card rv">
+      <span class="ico">📈</span>
+      <h3>Scope Badhta Gaya</h3>
+      <p>"Ek aur revision" → "Yeh bhi karo" → "Woh bhi" — bina ek bhi rupaye extra ke.</p>
+    </div>
+    <div class="pain-card rv">
+      <span class="ico">🤡</span>
+      <h3>Idea Copy Ho Gaya</h3>
+      <p>Client ne concept dusre se karwa liya. NDA nahi tha, kuch nahi ho sakta tha.</p>
+    </div>
+    <div class="pain-card rv">
+      <span class="ico">😶</span>
+      <h3>Koi Proof Nahi</h3>
+      <p>Dispute hua — client bola "maine aisa nahi kaha." Koi likha hua nahi tha.</p>
+    </div>
+  </div>
+  <div class="info-box rv">
+    ⚡ <strong>Seedhi baat:</strong> 73% Indian freelancers ne kabhi na kabhi bina payment ke kaam kiya — sirf isliye ki koi legal document nahi tha. Aaj yeh badlo.
+  </div>
+</section>
+
+<!-- DOCS -->
+<section class="docs-section">
+  <div class="section-tag rv">Complete Pack</div>
+  <h2 class="rv">6 Documents Jo<br><span style="color:var(--gold)">Sab Badal Denge</span></h2>
+  <p class="sub rv">Ek baar set karo — har naye client ko bhejo. Professional. Legal. Powerful.</p>
+
+  <div class="doc-cards">
+    <div class="doc-card rv">
+      <div class="doc-num">DOCUMENT 01</div>
+      <h3>Service Agreement</h3>
+      <p>Main contract — kaam, timeline, payment — sab legally bound.</p>
+      <ul class="doc-list">
+        <li>Scope of work clearly defined</li>
+        <li>Payment schedule + milestones</li>
+        <li>Termination clause</li>
+        <li>Dispute resolution — Indian law</li>
+        <li>IP ownership on full payment</li>
+      </ul>
+    </div>
+    <div class="doc-card rv">
+      <div class="doc-num">DOCUMENT 02</div>
+      <h3>Scope of Work</h3>
+      <p>"Maine yeh nahi kaha" — yeh sentence band. Exact deliverables sab likhe hua.</p>
+      <ul class="doc-list">
+        <li>Deliverables checklist</li>
+        <li>File formats specified</li>
+        <li>"Not included" section</li>
+        <li>Client responsibilities</li>
+        <li>Approval process defined</li>
+      </ul>
+    </div>
+    <div class="doc-card rv">
+      <div class="doc-num">DOCUMENT 03</div>
+      <h3>Payment Terms + Late Fee</h3>
+      <p>50% advance, 50% delivery. Late fee clause — Indian Contract Act ke under.</p>
+      <ul class="doc-list">
+        <li>Advance payment structure</li>
+        <li>2% weekly late fee</li>
+        <li>GST / TDS ready format</li>
+        <li>UPI + Bank transfer</li>
+        <li>Legal action warning</li>
+      </ul>
+    </div>
+    <div class="doc-card rv">
+      <div class="doc-num">DOCUMENT 04</div>
+      <h3>Revision Policy</h3>
+      <p>"Ek aur revision" ka drama khatam. Exactly kitne rounds — sab black & white mein.</p>
+      <ul class="doc-list">
+        <li>Included revision rounds</li>
+        <li>Extra revision pricing</li>
+        <li>Written request rule only</li>
+        <li>Revision vs new work defined</li>
+        <li>3-day response window</li>
+      </ul>
+    </div>
+    <div class="doc-card rv">
+      <div class="doc-num">DOCUMENT 05</div>
+      <h3>Project Closure Form</h3>
+      <p>Kaam khatam — signed proof. 3 mahine baad complaint? Document dikhao.</p>
+      <ul class="doc-list">
+        <li>Deliverables received ✓</li>
+        <li>Client approval signature</li>
+        <li>Final payment confirmation</li>
+        <li>"No further claims" clause</li>
+        <li>Files handover record</li>
+      </ul>
+    </div>
+    <div class="doc-card rv">
+      <div class="doc-num">DOCUMENT 06</div>
+      <h3>NDA — Non-Disclosure</h3>
+      <p>Aapka idea, concept, data — protected. Indian IT Act 2000 ke under valid.</p>
+      <ul class="doc-list">
+        <li>Business info confidential</li>
+        <li>2-year validity period</li>
+        <li>Breach penalty clause</li>
+        <li>Third-party sharing banned</li>
+        <li>Both parties protected</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bonus rv">
+    <div class="bonus-ico">🎁</div>
+    <div>
+      <h3>BONUS — Zoho Sign Setup Guide</h3>
+      <p>Client se online sign karwao — bina printing ke. Step-by-step screenshots ke saath. Free tool. IT Act 2000 ke under legally valid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat rv">
+      <div class="stat-n">500+</div>
+      <div class="stat-l">Freelancers Protected</div>
+    </div>
+    <div class="stat rv">
+      <div class="stat-n">6</div>
+      <div class="stat-l">Legal Documents</div>
+    </div>
+    <div class="stat rv">
+      <div class="stat-n">₹0</div>
+      <div class="stat-l">Lawyer Fee</div>
+    </div>
+    <div class="stat rv">
+      <div class="stat-n">5min</div>
+      <div class="stat-l">Setup Complete</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="section-tag rv">Real Reviews</div>
+  <h2 class="rv">Freelancers Keh Rahe Hain</h2>
+  <div class="testi-list">
+    <div class="testi-card rv">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Pehli baar client ne bina argument ke payment di — sirf contract ki wajah se. ₹499 ka best investment tha."</blockquote>
+      <div class="testi-author">
+        <div class="avatar">R</div>
+        <div class="author-info">
+          <strong>Rahul Sharma</strong>
+          <span>Graphic Designer, Pune</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card rv">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Scope creep completely band. Revision policy ne sab fix kar diya. Pehle clients unlimited changes maangte the!"</blockquote>
+      <div class="testi-author">
+        <div class="avatar">P</div>
+        <div class="author-info">
+          <strong>Priya Nair</strong>
+          <span>Content Writer, Bangalore</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card rv">
+      <div class="stars">★★★★★</div>
+      <blockquote>"NDA sign karwaya — client ne concept copy nahi kiya. Pehle ek baar cheating ho chuki thi. Lifesaver!"</blockquote>
+      <div class="testi-author">
+        <div class="avatar">A</div>
+        <div class="author-info">
+          <strong>Arjun Mehta</strong>
+          <span>Video Editor, Delhi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-tag rv">Pricing</div>
+  <h2 class="rv">Ek Investment.<br><span style="color:var(--gold)">Lifetime Protection.</span></h2>
+  <p class="sub rv">Ek client ka paise bachega toh 100x ROI milega.</p>
+
+  <div class="price-card rv">
+    <div class="popular">BEST VALUE</div>
+    <div class="plan-label">COMPLETE FREELANCE LEGAL PACK</div>
+    <div class="plan-price">
+      <div class="crossed">₹999 ki value</div>
+      <div class="amount"><sup>₹</sup>499</div>
+      <div class="note">Ek baar ka payment • Instant download • Lifetime access</div>
+    </div>
+    <ul class="feat-list">
+      <li><span class="ck">✓</span> Service Agreement (Main Contract)</li>
+      <li><span class="ck">✓</span> Scope of Work Template</li>
+      <li><span class="ck">✓</span> Payment Terms + Late Fee Notice</li>
+      <li><span class="ck">✓</span> Revision Policy Document</li>
+      <li><span class="ck">✓</span> Project Closure + Handover Form</li>
+      <li><span class="ck">✓</span> NDA — Non-Disclosure Agreement</li>
+      <li><span class="ck">✓</span> BONUS: Zoho Sign Setup Guide</li>
+      <li><span class="ck">✓</span> Editable Word + PDF — dono format</li>
+      <li><span class="ck">✓</span> Indian law ke hisaab se — legally valid</li>
+      <li><span class="ck">✓</span> Lifetime free updates</li>
+    </ul>
+    <!-- ✅ RAZORPAY BUTTON -->
+    <a href="https://superprofile.bio/vp/1000--fact-video-" target="_blank" class="btn-buy" id="rzp-btn">🛡️ Abhi ₹499 Mein Kharido →</a>
+
+    <div class="pay-methods">
+      <span>💳</span><span>UPI</span>
+      <span>|</span><span>Cards</span>
+      <span>|</span><span>Net Banking</span>
+      <span>|</span><span>Wallets</span>
+      <span>|</span><span>SuperProfile Secure</span>
+    </div>
+
+    <div class="secure">
+      <span class="ico">🔒</span> 100% Secure • SuperProfile Powered • Instant Delivery
+    </div>
+  </div>
+
+  <!-- SUCCESS POPUP -->
+  <div id="success-popup" class="popup-overlay" style="display:none">
+    <div class="popup-box">
+      <div class="popup-icon">✅</div>
+      <h3>Payment Successful!</h3>
+      <p>Aapka Freelance Legal Pack ready hai. Download link aapke email par bhej diya gaya hai.</p>
+      <a href="https://superprofile.bio/vp/1000--fact-video-" target="_blank" class="popup-btn">📥 Download Karo</a>
+      <button onclick="document.getElementById('success-popup').style.display='none'" class="popup-close">Close</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2 class="rv">Sawaal Jawab</h2>
+
+  <div class="faq-item rv">
+    <div class="faq-q">Kya yeh India mein legally valid hai? <span class="faq-ico">+</span></div>
+    <div class="faq-a">Haan, bilkul. Indian Contract Act 1872 aur IT Act 2000 ke under valid hain. E-signature bhi legally enforceable hai India mein.</div>
+  </div>
+  <div class="faq-item rv">
+    <div class="faq-q">Download kab milega? <span class="faq-ico">+</span></div>
+    <div class="faq-a">Payment ke turant baad — 2 minute ke andar — aapke email par download link aa jaayega. Instant delivery guaranteed.</div>
+  </div>
+  <div class="faq-item rv">
+    <div class="faq-q">Kya main edit kar sakta hoon? <span class="faq-ico">+</span></div>
+    <div class="faq-a">Haan! Editable Word (.docx) format milega — apna naam, rate, city sab customize karo. PDF bhi diya jayega ready-to-send ke liye.</div>
+  </div>
+  <div class="faq-item rv">
+    <div class="faq-q">Online signing ke liye alag software? <span class="faq-ico">+</span></div>
+    <div class="faq-a">Nahi! Bonus guide mein Zoho Sign ka setup bataya gaya hai — bilkul free (5 docs/month). Screenshots ke saath step-by-step guide hai.</div>
+  </div>
+  <div class="faq-item rv">
+    <div class="faq-q">Sirf designers ke liye hai? <span class="faq-ico">+</span></div>
+    <div class="faq-a">Nahi! Writers, video editors, developers, coaches, social media managers — har type ke freelancer ke liye editable hai.</div>
+  </div>
+  <div class="faq-item rv">
+    <div class="faq-q">Refund policy kya hai? <span class="faq-ico">+</span></div>
+    <div class="faq-a">Digital product hone ki wajah se refund nahi hota. Lekin technical problem ho toh WhatsApp support turant available hai.</div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta">
+  <h2 class="rv">Agle Client Ko<br><em style="color:var(--gold);font-style:normal">Contract Bhejo</em></h2>
+  <p class="rv">₹499 ka investment — kabhi cheating mat kha-o.</p>
+  <a href="https://superprofile.bio/vp/1000--fact-video-" target="_blank" class="btn-main rv" style="display:inline-flex">
+    🛡️ Download Karo — ₹499 →
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Freelance Legal Pack. All rights reserved.<br>Made with ❤️ for Indian Freelancers 🇮🇳</p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky" id="sticky">
+  <div class="sticky-left">
+    <strong>🛡️ Freelance Legal Pack</strong>
+    <span>6 Docs • Instant Download</span>
+  </div>
+  <a href="https://superprofile.bio/vp/1000--fact-video-" target="_blank" class="sticky-btn">₹499 →</a>
+</div>
+
+<!-- RAZORPAY SDK -->
+
+<script>
+// ✅ SuperProfile — Payment + Download
+// Saare buttons already link pe set hain
+// Koi extra code ki zaroorat nahi!
+console.log('Landing page ready — SuperProfile connected ✅');
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+// Scroll reveal
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+// Sticky bar
+const sticky = document.getElementById('sticky');
+window.addEventListener('scroll', () => {
+  sticky.classList.toggle('show', window.scrollY > 500);
+}, { passive: true });
+</script>
+</body>
+</html>
